@@ -23,12 +23,12 @@ Tom Troc est une application web développée dans le cadre d'une formation Open
 
 L'application suit une architecture MVC avec une conception orientée objet (POO).
 
-- `public/` : point d'entrée du site et ressources publiques (CSS, JS, images)
-- `src/controllers/` : contrôleurs qui gèrent les actions et les vues
-- `src/models/` : entités, managers et accès aux données
-- `src/views/` : templates HTML et layout
 - `config/database.php` : configuration de la base de données
-- `database.sql` : script de création et d'initialisation de la base
+- `public/` : point d'entrée du site et ressources publiques (CSS, JS, images)
+- `setup/database.sql` : script de création et d'initialisation de la base
+- `src/Controller/` : contrôleurs qui gèrent les actions et les vues
+- `src/Model/` : entités, managers et accès aux données
+- `views/` : templates HTML et layout
 
 ## Prérequis
 
@@ -61,10 +61,10 @@ Le fichier de configuration est `config/database.php`.
 Modifiez les constantes selon votre environnement :
 
 ```php
-define('DB_HOST', 'localhost');
+define('DB_HOST', 'localhost:3306');
 define('DB_NAME', 'tomtroc');
 define('DB_USER', 'root');
-define('DB_PASS', 'root');
+define('DB_PASS', 'secret');
 ```
 
 ### Importer la base de données
@@ -72,13 +72,13 @@ define('DB_PASS', 'root');
 Importer le fichier SQL dans votre base de données :
 
 ```bash
-mysql -u root -p tomtroc < database.sql
+mysql -u root -p tomtroc < setup/database.sql
 ```
 
 J'ai généré un fichier de données d’amorçage supplémentaire, vous pouvez aussi l’importer ainsi :
 
 ```bash
-mysql -u root -p tomtroc < seed_data.sql
+mysql -u root -p tomtroc < setup/seed_data.sql
 ```
 
 Remplacez `root` et `tomtroc` par votre utilisateur et nom de base de données si nécessaire.
@@ -88,10 +88,10 @@ Remplacez `root` et `tomtroc` par votre utilisateur et nom de base de données s
 Vous pouvez lancer le site localement avec le serveur PHP intégré :
 
 ```bash
-php -S localhost:8000 -t public
+php -S localhost:8080 -t public
 ```
 
-Puis ouvrir `http://localhost:8000` dans votre navigateur.
+Puis ouvrir `http://localhost:8080` dans votre navigateur.
 
 Remarque : un serveur local PHP intégré a été utilisé pour le développement (`php -S`). Il est néanmoins possible de configurer un serveur Apache ou Nginx pour un déploiement en production — suivez les exemples ci-dessous.
 
@@ -104,7 +104,7 @@ Remarque : un serveur local PHP intégré a été utilisé pour le développemen
 3. Exemple de configuration de virtual host :
 
 ```apache
-<VirtualHost *:80>
+<VirtualHost *:8080>
     ServerName tomtroc.local
     DocumentRoot /chemin/vers/PHP-site-TomTroc/public
 
@@ -126,7 +126,7 @@ Remarque : un serveur local PHP intégré a été utilisé pour le développemen
 
 ```nginx
 server {
-    listen 80;
+    listen 8080;
     server_name tomtroc.local;
     root /chemin/vers/PHP-site-TomTroc/public;
 
@@ -162,5 +162,5 @@ chmod 755 public/img/books
 ## Notes
 
 - Le routeur principal est dans `public/index.php`.
-- Les entités et managers sont dans `src/models/entities/` et `src/models/managers/`.
+- Les entités et managers sont dans `src/Model`.
 - Si vous changez les identifiants de la base, mettez à jour `config/database.php`.
