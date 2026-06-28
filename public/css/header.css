@@ -1,0 +1,92 @@
+.site-header {
+    width: 100%;
+    height: 80px;
+    background-color: var(--lightGray);
+}
+
+.header-inner {
+    max-width: 1300px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* On crée le conteneur global qui interdit les retours à la ligne */
+.nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    white-space: nowrap;
+    /* EMPÊCHE le menu de passer sur 2 lignes */
+}
+
+/* --- BLOC GAUCHE --- */
+.nav-left {
+    display: flex;
+    align-items: center;
+    margin-left: 150px;
+}
+
+.logo {
+    margin-right: 78px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-left a:not(.logo) {
+    margin-right: 44px;
+    /* 44px entre Accueil et Nos Livres */
+}
+
+/* --- SEPARATEUR --- */
+.separator {
+    margin-left: auto;
+    height: 19px;
+}
+
+/* --- BLOC DROITE --- */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 58px;
+    margin-left: 58px;
+}
+
+.push-right {
+    margin-left: auto;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.nav a {
+    font-size: 14px;
+    color: var(--darkGray);
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+}
+
+/* --- LA BULLE (COMPTEUR) --- */
+.badge-wrapper {
+    background-color: #292929;
+    min-width: 10.5px;
+    height: 15px;
+    border-radius: 6.75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2.25px 2.5px 2.75px 3px;
+    margin-left: 0.29px;
+}
+
+.badge-number {
+    color: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    font-size: 8.25px;
+    font-weight: 700;
+    max-width: 5px;
+    max-height: 10px;
+}
