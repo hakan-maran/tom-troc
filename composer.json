@@ -1,0 +1,17 @@
+{
+    "name": "filomenajurgaityte/php-site-tom-troc",
+    "autoload": {
+        "psr-4": {
+            "TomTroc\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Filomena Jurgaityte",
+            "email": "filomena.jurgaityte@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^4.0"
+    }
+}
